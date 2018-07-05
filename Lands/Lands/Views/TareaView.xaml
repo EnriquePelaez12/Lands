@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lands.Views.TareaView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Volver"   
+            Command="{Binding CancelarTareaComando}">
+            <ToolbarItem.Icon>
+                <OnPlatform 
+                    x:TypeArguments="FileImageSource"
+                    Android="cancelar"
+                    iOS="cancelar"    
+                    WinPhone="Assets/cancelar.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Guardar"   
+            Command="{Binding GuardarTareaComando}">
+            <ToolbarItem.Icon>
+                <OnPlatform 
+                    x:TypeArguments="FileImageSource"
+                    Android="guardar"
+                    iOS="guardar"    
+                    WinPhone="Assets/guardar.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Borrar"   
+            Command="{Binding BorrarTareaComando}">
+            <ToolbarItem.Icon>
+                <OnPlatform 
+                    x:TypeArguments="FileImageSource"
+                    Android="borrar"
+                    iOS="borrar"    
+                    WinPhone="Assets/borrar.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <StackLayout
+             BackgroundColor="Silver">
+            <Frame
+             CornerRadius="20"
+             HasShadow="True"
+            Margin="5">
+                <Grid
+              Margin="6, 0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout
+                    
+                    Padding ="0,0,0,0"
+                    Orientation ="Vertical"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand"
+                    Grid.Row="0" 
+                    Grid.ColumnSpan="2">
+                        <ActivityIndicator 
+                        IsVisible="{Binding HayOperacionesActivas}"
+                        IsRunning="{Binding HayOperacionesActivas}"
+                        Color="Black"/>
+                    </StackLayout>
+
+                    <Label 
+                    FontSize="Medium"
+                    TextColor="Black"
+                    Text="Descripción" 
+                    Grid.Column="0" 
+                    Grid.Row="1"
+                    VerticalOptions="Center">
+                    </Label>
+                    <Entry 
+                    TextColor="Black"
+                    Placeholder="Tarea a realizar" 
+                    Text="{Binding Ficha.Descripcion, Mode=TwoWay}" Grid.Column="1" Grid.Row="1">
+                    </Entry>
+                    <Label 
+                    FontSize="Medium"
+                    TextColor="Black"
+                    Text="Fecha" 
+                    Grid.Column="0" 
+                    Grid.Row="2"
+                    VerticalOptions="Center">
+                    </Label>
+                    <Entry 
+                    TextColor="Black"
+                    Placeholder="Nueva Fecha" 
+                    Text="{Binding Ficha.Fecha, Mode=TwoWay}" Grid.Column="1" Grid.Row="2">
+                    </Entry>
+                    <Label 
+                        FontSize="Medium"
+                        TextColor="Black"
+                        Text="FechaActual"
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        VerticalOptions="Center"/>
+                    <DatePicker
+                        Date="2018-03-12"
+                        DateSelected="DatePicker_DateSelected"
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        MaximumDate="2018-12-31"
+                        MinimumDate="1990-01-01">
+                        <DatePicker.Format>yyyy/M/d</DatePicker.Format>
+                    </DatePicker>
+                    <Label 
+                    FontSize="Medium"
+                    TextColor="Black"
+                    Text="Completada"
+                    Grid.Column="0" 
+                    Grid.Row="4"
+                    VerticalOptions="Center">
+                    </Label>
+                    <Switch 
+                    IsToggled="{Binding Ficha.Completada,Mode=TwoWay}" Grid.Column="1" Grid.Row="4">
+                    </Switch>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
