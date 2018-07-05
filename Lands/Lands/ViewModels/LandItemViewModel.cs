@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-
+// solo es un comentario guardar
 namespace Lands.ViewModels
 {
     public class LandItemViewModel: Land
